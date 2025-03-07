@@ -1,30 +1,25 @@
 package views;
 
 import java.util.Scanner;
-
-import models.NhanVien;
+import controller.QuanLyNhanVien;
 
 public class NhanVienView {
     Scanner sc = new Scanner(System.in);
-    NhanVien nv = new NhanVien();
+    QuanLyNhanVien quanLyNhanVien;
     Menu menu;
 
-    public NhanVienView(Menu menu) {
+    public NhanVienView(Menu menu, QuanLyNhanVien quanLyNhanVien) {
         this.menu = menu;
+        this.quanLyNhanVien = quanLyNhanVien;
     }
 
     public void showNhanVienMenu() {        
-        System.out.print(">Nhap ten cua ban: ");
-
-        String tenNv = sc.nextLine();        
-        nv.setTenNv(tenNv);
-
+        quanLyNhanVien.themNhanVien();
+        
+        // In ra menu chao nhan vien
         menu.handleEndline(1);
-        String chao2String = " Xin chao, " + tenNv + "! ";
-        menu.getEqualByString(chao2String);
+        String chaoNvString = " Xin chao, " + quanLyNhanVien.getTenNhanVien() + "! ";
+        menu.handleDrawBoard(chaoNvString);
         menu.handleEndline(1);
-
     }
-    
-    
 }

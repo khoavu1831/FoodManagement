@@ -2,15 +2,23 @@ package views;
 
 import java.util.Scanner;
 
+import controller.QuanLyNhanVien;
+
 public class Menu {
     Scanner sc = new Scanner(System.in);
+    QuanLyNhanVien quanLyNhanVien;
     NhanVienView nvView;
+    PhieuNhapView pnView;
+    PhieuXuatView pxView;
 
     public Menu() {
-        this.nvView = new NhanVienView(this);
+        this.quanLyNhanVien = new QuanLyNhanVien();
+        this.nvView = new NhanVienView(this, quanLyNhanVien);
+        this.pnView = new PhieuNhapView(this, quanLyNhanVien);
+        // this.pxView = new PhieuXuatView(this, quanLyNhanVien);
     }
 
-    public void getEqualByString(String str) {
+    public void handleDrawBoard(String str) {
         System.out.println("=".repeat(str.length()));
         System.out.println(str);
         System.out.println("=".repeat(str.length()));
@@ -23,8 +31,9 @@ public class Menu {
     }
 
     public void showMenu() {
+        // In ra menu chao
         String chao1String = "   HE THONG QUAN LY KHO THUC PHAM LEGIT2.0   ";
-        getEqualByString(chao1String);
+        handleDrawBoard(chao1String);
         handleEndline(1);
         
         // Thong bao nhap ten nhan vien
@@ -36,7 +45,7 @@ public class Menu {
 
     public void showMainMenu() {
         String mainMenuString = "        MAIN MENU        ";
-        getEqualByString(mainMenuString);
+        handleDrawBoard(mainMenuString);
         System.out.println(" 1. Quan ly phieu nhap ");
         System.out.println(" 2. Quan ly phieu xuat ");
         System.out.println(" 3. Quan ly san pham ");
@@ -44,7 +53,6 @@ public class Menu {
         System.out.println("=".repeat(mainMenuString.length()));
         System.out.print(">Chon chuc nang: ");
 
-        // Xu ly chon menu
         int chon = sc.nextInt();
         handleEndline(1);
 
@@ -70,7 +78,7 @@ public class Menu {
 
     public void showPhieuNhapMenu() {
         String nhapMenuString = "        QUAN LY PHIEU NHAP        ";
-        getEqualByString(nhapMenuString);
+        handleDrawBoard(nhapMenuString);
         System.out.println(" 1. Tao phieu nhap ");
         System.out.println(" 2. Xem danh sach phieu nhap ");
         System.out.println(" 3. Xoa phieu nhap ");
@@ -83,10 +91,12 @@ public class Menu {
         
         switch (chon) {
             case 1:
-                System.out.println("Tao phieu nhap");
+                pnView.showTaoPhieuNhap();
+                showPhieuNhapMenu();
                 break;
             case 2:
-                System.out.println("Xem danh sach phieu nhap");
+                pnView.showDanhSachPhieuNhap();
+                showPhieuNhapMenu();
                 break;
             case 3:
                 System.out.println("Xoa phieu nhap");
@@ -102,7 +112,7 @@ public class Menu {
 
     public void showPhieuXuatMenu() {
         String xuatMenuString = "        QUAN LY PHIEU XUAT        ";
-        getEqualByString(xuatMenuString);
+        handleDrawBoard(xuatMenuString);
         System.out.println(" 1. Tao phieu xuat ");
         System.out.println(" 2. Xem danh sach phieu xuat ");
         System.out.println(" 3. Quay lai ");
@@ -130,7 +140,7 @@ public class Menu {
 
     public void showSanPhamMenu() {
         String spMenuString = "        QUAN LY SAN PHAM        ";
-        getEqualByString(spMenuString);
+        handleDrawBoard(spMenuString);
         System.out.println(" 1. Xem danh sach san pham ");
         System.out.println(" 2. Sua san pham ");
         System.out.println(" 3. Xoa san pham ");
