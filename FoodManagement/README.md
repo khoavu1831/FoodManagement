@@ -4,12 +4,12 @@
 - views/: giao diện 
 - App.java: file chạy chương trình.
 
-## Quy trình hoạt động: version1.0.0
+## Quy trình hoạt động: version 1.0.1
 > Nhân viên tham gia _ Nhập thông tin
 
 >> Quản lý phiếu nhập
-+ Tạo phiếu nhập
-+ Xem danh sách phiếu nhập
++ Tạo phiếu nhập (checked)
++ Xem danh sách phiếu nhập (checked)
 + Xóa phiếu nhập
 + ...
 
