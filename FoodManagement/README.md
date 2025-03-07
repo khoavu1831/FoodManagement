@@ -8,8 +8,8 @@
 > Nhân viên tham gia _ Nhập thông tin
 
 >> Quản lý phiếu nhập
-+ Tạo phiếu nhập (checked)
-+ Xem danh sách phiếu nhập (checked)
++ Tạo phiếu nhập ✅
++ Xem danh sách phiếu nhập ✅
 + Xóa phiếu nhập
 + ...
 
