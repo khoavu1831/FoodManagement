@@ -15,10 +15,7 @@
 
 
 ## 🖥️ Cài Đặt và Chạy Dự án
-1. Clone repo:
-   
-   git clone <repository_link>
-   
+1. Clone repo: git clone <repository_link>
 2. Mở IDE và import project.
 3. Đảm bảo các thư viện Java đã được cấu hình.
 4. Chạy file App.java trong thư mục src.
