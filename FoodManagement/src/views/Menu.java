@@ -18,24 +18,9 @@ public class Menu {
         // this.pxView = new PhieuXuatView(this, quanLyNhanVien);
     }
 
-    public void handleDrawBoard(String str) {
-        System.out.println("=".repeat(str.length()));
-        System.out.println(str);
-        System.out.println("=".repeat(str.length()));
-    }
-
-    public void handleEndline(int line) {
-        for (int i = 0; i < line; i++) {
-            System.out.println();
-        }
-    }
-
     public void showMenu() {
         // In ra menu chao
-        String chao1String = "   HE THONG QUAN LY KHO THUC PHAM LEGIT2.0   ";
-        handleDrawBoard(chao1String);
-        handleEndline(1);
-        
+        HandleDraw.handleDrawBoard("   HE THONG QUAN LY KHO THUC PHAM LEGIT2.0   ", HandleDraw.TITLE_TXT);
         // Thong bao nhap ten nhan vien
         nvView.showNhanVienMenu();
 
@@ -45,21 +30,21 @@ public class Menu {
 
     public void showMainMenu() {
         String mainMenuString = "        MAIN MENU        ";
-        handleDrawBoard(mainMenuString);
-        System.out.println(" 1. Quan ly phieu nhap ");
-        System.out.println(" 2. Quan ly phieu xuat ");
-        System.out.println(" 3. Quan ly san pham ");
-        System.out.println(" 4. Thoat chuong trinh ");
+        HandleDraw.handleDrawBoard(mainMenuString, HandleDraw.TITLE_TXT);
+        HandleDraw.handlePrintln(" 1. Quan ly phieu nhap", HandleDraw.BRIGHT_RED);
+        HandleDraw.handlePrintln(" 2. Quan ly phieu xuat", HandleDraw.CYAN);
+        HandleDraw.handlePrintln(" 3. Quan ly san pham", HandleDraw.PURPLE);
+        HandleDraw.handlePrintln(" 4. Thoat chuong trinh", HandleDraw.SYSTEM_TXT);
         System.out.println("=".repeat(mainMenuString.length()));
-        System.out.print(">Chon chuc nang: ");
+        HandleDraw.handlePrint(">Chon chuc nang: ", HandleDraw.REPLY_TXT);
 
         int chon = sc.nextInt();
-        handleEndline(1);
+        HandleDraw.handleEndline(1);
 
         switch (chon) {
             case 1:
                 showPhieuNhapMenu();
-                handleEndline(2);
+                HandleDraw.handleEndline(2);
                 break;
             case 2:
                 showPhieuXuatMenu();
@@ -68,26 +53,26 @@ public class Menu {
                 showSanPhamMenu();
                 break;
             case 4:
-                System.out.println("Ket thuc chuong trinh!");
+                HandleDraw.handleSystemTxt("Chuong trinh ket thuc!");
                 break;
             default:
-                System.out.println("Chuc nang khong ton tai!");
+                HandleDraw.handleSystemTxt("Loi: Chuc nang khong ton tai!");
                 break;
         }
     }
 
     public void showPhieuNhapMenu() {
         String nhapMenuString = "        QUAN LY PHIEU NHAP        ";
-        handleDrawBoard(nhapMenuString);
-        System.out.println(" 1. Tao phieu nhap ");
-        System.out.println(" 2. Xem danh sach phieu nhap ");
-        System.out.println(" 3. Xoa phieu nhap ");
-        System.out.println(" 4. Quay lai ");
+        HandleDraw.handleDrawBoard(nhapMenuString,  HandleDraw.TITLE_TXT);
+        HandleDraw.handlePrintln("1. Tao phieu nhap", HandleDraw.BRIGHT_RED);
+        HandleDraw.handlePrintln("2. Xem danh sach phieu nhap", HandleDraw.CYAN);
+        HandleDraw.handlePrintln("3. Xoa phieu nhap", HandleDraw.PURPLE);
+        HandleDraw.handlePrintln("4. Quay lai", HandleDraw.SYSTEM_TXT);
         System.out.println("=".repeat(nhapMenuString.length()));
-        System.out.print(">Chon chuc nang: ");
+        HandleDraw.handlePrint(">Chon chuc nang: ", HandleDraw.REPLY_TXT);
 
         int chon = sc.nextInt();
-        handleEndline(1);
+        HandleDraw.handleEndline(1);
         
         switch (chon) {
             case 1:
@@ -99,7 +84,8 @@ public class Menu {
                 showPhieuNhapMenu();
                 break;
             case 3:
-                System.out.println("Xoa phieu nhap");
+                pnView.showXoaPhieuNhap();
+                showPhieuNhapMenu();
                 break;
             case 4:
                 showMainMenu();
@@ -112,7 +98,7 @@ public class Menu {
 
     public void showPhieuXuatMenu() {
         String xuatMenuString = "        QUAN LY PHIEU XUAT        ";
-        handleDrawBoard(xuatMenuString);
+        HandleDraw.handleDrawBoard(xuatMenuString,  HandleDraw.TITLE_TXT);
         System.out.println(" 1. Tao phieu xuat ");
         System.out.println(" 2. Xem danh sach phieu xuat ");
         System.out.println(" 3. Quay lai ");
@@ -120,7 +106,7 @@ public class Menu {
         System.out.print(">Chon chuc nang: ");
 
         int chon = sc.nextInt();
-        handleEndline(1);
+        HandleDraw.handleEndline(1);
 
         switch (chon) {
             case 1:
@@ -140,7 +126,7 @@ public class Menu {
 
     public void showSanPhamMenu() {
         String spMenuString = "        QUAN LY SAN PHAM        ";
-        handleDrawBoard(spMenuString);
+        HandleDraw.handleDrawBoard(spMenuString,  HandleDraw.TITLE_TXT);
         System.out.println(" 1. Xem danh sach san pham ");
         System.out.println(" 2. Sua san pham ");
         System.out.println(" 3. Xoa san pham ");
@@ -149,7 +135,7 @@ public class Menu {
         System.out.print(">Chon chuc nang: ");
 
         int chon = sc.nextInt();
-        handleEndline(1);
+        HandleDraw.handleEndline(1);
 
         switch (chon) {
             case 1:

@@ -2,6 +2,8 @@ package controller;
 
 import java.util.Scanner;
 
+import views.HandleDraw;
+
 // Tam thoi bo qua models.NhanVien
 public class QuanLyNhanVien {
     Scanner sc = new Scanner(System.in);
@@ -9,7 +11,7 @@ public class QuanLyNhanVien {
     private String tenNv;
 
     public void themNhanVien() {
-        System.out.print(">Nhap ten nhan vien: ");
+        HandleDraw.handlePrint(">Nhap ten nhan vien: ", HandleDraw.REPLY_TXT);
         tenNv = sc.nextLine();
     }
 

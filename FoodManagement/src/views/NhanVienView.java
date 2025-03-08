@@ -15,11 +15,10 @@ public class NhanVienView {
 
     public void showNhanVienMenu() {        
         quanLyNhanVien.themNhanVien();
+        HandleDraw.handleEndline(1);
         
         // In ra menu chao nhan vien
-        menu.handleEndline(1);
-        String chaoNvString = " Xin chao, " + quanLyNhanVien.getTenNhanVien() + "! ";
-        menu.handleDrawBoard(chaoNvString);
-        menu.handleEndline(1);
+        String chaoNvString = "Xin chao, " + quanLyNhanVien.getTenNhanVien() + "!";
+        HandleDraw.handleSystemTxt(chaoNvString);
     }
 }

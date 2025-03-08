@@ -20,20 +20,24 @@ public class PhieuNhapView {
     }
 
     public void showTaoPhieuNhap() {
-        String showNhapString = "        TAO PHIEU NHAP        ";
-        menu.handleDrawBoard(showNhapString);
-        menu.handleEndline(1);
+        HandleDraw.handleDrawBoard("        TAO PHIEU NHAP        ", HandleDraw.TITLE_TXT);
 
         // Nhap thong tin phieu nhap
         quanLyPhieuNhap.taoPhieuNhap(quanLyNhanVien, menu, quanLyPhieuNhap);
     }
 
     public void showDanhSachPhieuNhap() {
-        String showNhapString = "        DANH SACH PHIEU NHAP        ";
-        menu.handleDrawBoard(showNhapString);
-        menu.handleEndline(1);
+        HandleDraw.handleDrawBoard("        DANH SACH PHIEU NHAP        ", HandleDraw.TITLE_TXT);
 
         // In danh sach phieu nhap
         quanLyPhieuNhap.xuatDanhSachPhieuNhap(quanLyPhieuNhap, menu);
+    }
+
+    public void showXoaPhieuNhap() {
+        HandleDraw.handleDrawBoard("        XOA PHIEU NHAP        ", HandleDraw.TITLE_TXT);
+
+        showDanhSachPhieuNhap();
+        // Xoa phieu nhap
+        quanLyPhieuNhap.xoaDanhSachPhieuNhap(quanLyPhieuNhap, menu);
     }
 }
