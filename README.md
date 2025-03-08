@@ -15,7 +15,10 @@
 
 
 ## 🖥️ Cài Đặt và Chạy Dự án
-1. Clone repo: git clone https://github.com/khoavu1831/FoodManagement.git
+1. Clone repo:
+   ```bash
+   git clone https://github.com/khoavu1831/FoodManagement.git
+   ```
 2. Mở IDE và import project.
 3. Đảm bảo các thư viện Java đã được cấu hình.
 4. Chạy file App.java trong thư mục src.
