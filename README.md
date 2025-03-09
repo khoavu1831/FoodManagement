@@ -43,8 +43,8 @@
 + ...
 
 >> Quản lý sản phẩm
-+ Sửa sản phẩm _ Giá, Tên sản phẩm...
-+ Xem danh sách sản phẩm
++ Sửa sản phẩm _ Giá, Tên sản phẩm...✅
++ Xem danh sách sản phẩm ✅
 + Xóa sản phẩm _ Khi số lượng = 0
 + ...
 
