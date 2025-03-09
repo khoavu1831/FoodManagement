@@ -18,7 +18,6 @@ public class HandleDraw {
     public static final String TITLE_TXT = YELLOW;
     public static final String REPLY_TXT = GREEN;
 
-
     private HandleDraw() {}
     
     public static void handleDrawBoard(String str, String color) {
@@ -36,13 +35,26 @@ public class HandleDraw {
     }
 
     public static void handleReplyTxt(String str) {
-        handlePrint(">" + str, REPLY_TXT);
+        handlePrint(">" + str + ": ", REPLY_TXT);
     }
 
     public static void handleSystemTxt(String str) {
         handlePrintln("<" + str + ">", SYSTEM_TXT);
     }
-    
+
+    public static void handleTitleList(String str1, String str2) {
+        handlePrint("+ " + str1, PURPLE);
+        handlePrintln(str2, WHITE);
+    }
+
+    public static void handleChildTitleList(String str1, String str2) {
+        handlePrint("       " + str1, BLUE);
+        handlePrintln(str2, WHITE);
+    }
+
+    public static void handleTitleYellowTxt(String str) {
+        handlePrintln("      <" + str.toUpperCase() + ">", YELLOW);
+    }
 
     public static void handleEndline(int line) {
         for (int i = 0; i < line; i++) {

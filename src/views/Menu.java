@@ -10,19 +10,18 @@ import controller.QuanLySanPham;
 public class Menu {
     Scanner sc = new Scanner(System.in);
     QuanLyNhanVien quanLyNhanVien;
+    QuanLySanPham quanLySanPham;
     NhanVienView nvView;
     PhieuNhapView pnView;
     PhieuXuatView pxView;
     SanPhamView spView;
-    QuanLySanPham quanLySanPham; // Thêm QuanLySanPham
 
     public Menu() {
         this.quanLyNhanVien = new QuanLyNhanVien();
-        this.quanLySanPham = new QuanLySanPham(); // Khởi tạo QuanLySanPham
+        this.quanLySanPham = new QuanLySanPham();
         this.nvView = new NhanVienView(this, quanLyNhanVien);
-        this.pnView = new PhieuNhapView(this, quanLyNhanVien, quanLySanPham); // Truyền QuanLySanPham vào PhieuNhapView
+        this.pnView = new PhieuNhapView(this, quanLyNhanVien, quanLySanPham);
         this.spView = new SanPhamView(this, quanLySanPham);
-        // this.pxView = new PhieuXuatView(this, quanLyNhanVien);
     }
 
     public void showMenu() {
@@ -34,12 +33,12 @@ public class Menu {
     public void showMainMenu() {
         String mainMenuString = "        MAIN MENU        ";
         HandleDraw.handleDrawBoard(mainMenuString, HandleDraw.TITLE_TXT);
-        HandleDraw.handlePrintln(" 1. Quan ly phieu nhap", HandleDraw.BRIGHT_RED);
-        HandleDraw.handlePrintln(" 2. Quan ly phieu xuat", HandleDraw.CYAN);
-        HandleDraw.handlePrintln(" 3. Quan ly san pham", HandleDraw.PURPLE);
+        HandleDraw.handlePrintln(" 1. Quan ly phieu nhap", HandleDraw.WHITE);
+        HandleDraw.handlePrintln(" 2. Quan ly phieu xuat", HandleDraw.WHITE);
+        HandleDraw.handlePrintln(" 3. Quan ly san pham", HandleDraw.WHITE);
         HandleDraw.handlePrintln(" 4. Thoat chuong trinh", HandleDraw.SYSTEM_TXT);
         System.out.println("=".repeat(mainMenuString.length()));
-        HandleDraw.handlePrint(">Chon chuc nang: ", HandleDraw.REPLY_TXT);
+        HandleDraw.handleReplyTxt("Chon chuc nang");
 
         int chon = sc.nextInt();
         HandleDraw.handleEndline(1);
@@ -67,12 +66,13 @@ public class Menu {
     public void showPhieuNhapMenu() {
         String nhapMenuString = "        QUAN LY PHIEU NHAP        ";
         HandleDraw.handleDrawBoard(nhapMenuString, HandleDraw.TITLE_TXT);
-        HandleDraw.handlePrintln("1. Tao phieu nhap", HandleDraw.BRIGHT_RED);
-        HandleDraw.handlePrintln("2. Xem danh sach phieu nhap", HandleDraw.CYAN);
-        HandleDraw.handlePrintln("3. Xoa phieu nhap", HandleDraw.PURPLE);
+        HandleDraw.handlePrintln("1. Tao phieu nhap", "");
+        HandleDraw.handlePrintln("2. Xem danh sach phieu nhap", "");
+        HandleDraw.handlePrintln("3. Xoa phieu nhap", "");
         HandleDraw.handlePrintln("4. Quay lai", HandleDraw.SYSTEM_TXT);
         System.out.println("=".repeat(nhapMenuString.length()));
-        HandleDraw.handlePrint(">Chon chuc nang: ", HandleDraw.REPLY_TXT);
+        HandleDraw.handleReplyTxt("Chon chuc nang");
+
 
         int chon = sc.nextInt();
         HandleDraw.handleEndline(1);
@@ -130,13 +130,12 @@ public class Menu {
     public void showSanPhamMenu() {
         String spMenuString = "        QUAN LY SAN PHAM        ";
         HandleDraw.handleDrawBoard(spMenuString, HandleDraw.TITLE_TXT);
-        System.out.println(" 1. Xem danh sach san pham ");
-        System.out.println(" 2. Sua san pham ");
-        System.out.println(" 3. Xoa san pham ");
-        System.out.println(" 4. Quay lai ");
+        HandleDraw.handlePrintln(" 1. Xem danh sach san pham", "");
+        HandleDraw.handlePrintln(" 2. Sua san pham ", "");
+        HandleDraw.handlePrintln(" 3. Xoa san pham ", "");
+        HandleDraw.handlePrintln(" 4. Quay lai", HandleDraw.SYSTEM_TXT);
         System.out.println("=".repeat(spMenuString.length()));
-        System.out.print(">Chon chuc nang: ");
-
+        HandleDraw.handleReplyTxt("Chon chuc nang");
         int chon = sc.nextInt();
         HandleDraw.handleEndline(1);
 

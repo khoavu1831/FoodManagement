@@ -9,11 +9,10 @@ import models.SanPham;
 
 public class QuanLySanPham {
     private List<SanPham> danhSachSanPham;
-    private Scanner sc;
+    private Scanner sc = new Scanner(System.in);
 
     public QuanLySanPham() {
         this.danhSachSanPham = new ArrayList<>();
-        this.sc = new Scanner(System.in);
     }
 
     public List<SanPham> getDanhSachSanPham() {

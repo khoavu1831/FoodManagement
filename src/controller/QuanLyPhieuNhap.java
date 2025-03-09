@@ -54,7 +54,7 @@ public class QuanLyPhieuNhap {
 
             SanPham sanPham = new SanPham(tenSanPham, soLuong, giaNhap);
 
-            // Luu san pham vao danh sach san pham (dung de hien )
+            // Luu san pham vao danh sach san pham (dung de hien)
             danhSachSanPham.add(sanPham);
 
             // Luu san pham vao
@@ -75,20 +75,21 @@ public class QuanLyPhieuNhap {
             HandleDraw.handleSystemTxt("Danh sach phieu nhap rong!");
             return;
         }
-
+        HandleDraw.handleTitleYellowTxt("Danh sach phieu nhap");
         quanLyPhieuNhap.getDanhSachPhieuNhap().forEach(phieuNhap -> {
-            System.out.println("Ma phieu nhap: " + phieuNhap.getMaPhieuNhap());
-            System.out.println("Nha cung cap: " + phieuNhap.getTenNhaCungCap());
-            System.out.println("Nhan vien nhap: " + phieuNhap.getTenNhanVienNhap());
-            System.out.println("Danh sach san pham: ");
+            HandleDraw.handleTitleList("Ma phieu nhap:", phieuNhap.getMaPhieuNhap());
+            HandleDraw.handleTitleList("Nha cung cap:", phieuNhap.getTenNhaCungCap());
+            HandleDraw.handleTitleList("Nhan vien nhap:", phieuNhap.getTenNhanVienNhap());
+            HandleDraw.handleTitleList("Danh sach san pham:", "");
             phieuNhap.getDanhSachSanPham().forEach(sanPham -> {
-                System.out.println("     Ten san pham: " + sanPham.getTenSanPham());
-                System.out.println("     So luong: " + sanPham.getSoLuong());
-                System.out.println("     Gia nhap: " + sanPham.getGiaNhap());
-                System.out.println("     Thanh tien cua San pham: " + sanPham.getTenSanPham() + " = " + sanPham.getGiaNhap() * sanPham.getSoLuong());
+                HandleDraw.handleChildTitleList("Ten san pham: ", sanPham.getTenSanPham());
+                HandleDraw.handleChildTitleList("So luong: ", String.valueOf(sanPham.getSoLuong()));
+                HandleDraw.handleChildTitleList("Gia nhap: ", String.valueOf(sanPham.getGiaNhap()));
+                HandleDraw.handleChildTitleList("Thanh tien = ", String.valueOf(sanPham.getGiaNhap() * sanPham.getSoLuong()));
+                HandleDraw.handlePrintln("     ----------------------", "");
             });
-            System.out.println("Tong tien: " + phieuNhap.tongTien());
-            System.out.println("----------------------");
+            HandleDraw.handleTitleList("Tong tien:", String.valueOf(phieuNhap.tongTien()));
+            System.out.println("----------------------------------");
             HandleDraw.handleEndline(1);
         });
     }
