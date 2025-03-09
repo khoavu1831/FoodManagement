@@ -2,7 +2,7 @@ package controller;
 
 import java.util.Scanner;
 
-import views.HandleDraw;
+import config.HandleDraw;
 
 // Tam thoi bo qua models.NhanVien
 public class QuanLyNhanVien {

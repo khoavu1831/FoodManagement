@@ -4,17 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import config.HandleDraw;
 import models.PhieuNhap;
 import models.SanPham;
-import views.HandleDraw;
 import views.Menu;
 
 public class QuanLyPhieuNhap {
     Scanner sc = new Scanner(System.in);
     private List<PhieuNhap> danhSachPhieuNhap;
+    private QuanLySanPham quanLySanPham; 
 
-    public QuanLyPhieuNhap() {
+    public QuanLyPhieuNhap(QuanLySanPham quanLySanPham) {
         this.danhSachPhieuNhap = new ArrayList<>();
+        this.quanLySanPham = quanLySanPham;
     }
 
     public void themPhieuNhap(PhieuNhap phieuNhap) {
@@ -30,15 +32,14 @@ public class QuanLyPhieuNhap {
     }
 
     public void taoPhieuNhap(QuanLyNhanVien quanLyNhanVien, Menu menu, QuanLyPhieuNhap quanLyPhieuNhap) {
-        // Nhap thong tin phieu nhap
         HandleDraw.handleReplyTxt("Nhap ma phieu nhap: ");
         String maPhieuNhap = sc.nextLine();
         HandleDraw.handleReplyTxt("Nhap ten nha cung cap: ");
         String tenNcc = sc.nextLine();
         String tenNv = quanLyNhanVien.getTenNhanVien();
-        HandleDraw.handleReplyTxt("Nhan Vien nhap: " ); HandleDraw.handlePrint(tenNv, HandleDraw.WHITE);
+        HandleDraw.handleReplyTxt("Nhan Vien nhap: ");
+        HandleDraw.handlePrint(tenNv, HandleDraw.WHITE);
 
-        // Nhap danh sach san pham
         List<SanPham> danhSachSanPham = new ArrayList<>();
         boolean isNhapSanPham = true;
         while (isNhapSanPham) {
@@ -51,21 +52,26 @@ public class QuanLyPhieuNhap {
             HandleDraw.handleReplyTxt("Nhap gia nhap: ");
             double giaNhap = Double.parseDouble(sc.nextLine());
 
-            danhSachSanPham.add(new SanPham(tenSanPham, soLuong, giaNhap));
+            SanPham sanPham = new SanPham(tenSanPham, soLuong, giaNhap);
+
+            // Luu san pham vao danh sach san pham (dung de hien )
+            danhSachSanPham.add(sanPham);
+
+            // Luu san pham vao
+            quanLySanPham.themSanPham(sanPham);
 
             HandleDraw.handleReplyTxt("Ban co muon nhap san pham khac khong? (y/n): ");
             String chon = sc.nextLine();
-            isNhapSanPham = chon.equals("y") ? true : false;
+            isNhapSanPham = chon.equalsIgnoreCase("y");
         }
 
-        // Tao phieu nhap va them vao danh sach
         PhieuNhap phieuNhap = new PhieuNhap(maPhieuNhap, tenNcc, tenNv, danhSachSanPham);
         quanLyPhieuNhap.themPhieuNhap(phieuNhap);
         HandleDraw.handleSystemTxt("Da tao phieu nhap thanh cong!");
     }
 
     public void xuatDanhSachPhieuNhap(QuanLyPhieuNhap quanLyPhieuNhap, Menu menu) {
-        if (quanLyPhieuNhap.getDanhSachPhieuNhap().size() == 0) {
+        if (quanLyPhieuNhap.getDanhSachPhieuNhap().isEmpty()) {
             HandleDraw.handleSystemTxt("Danh sach phieu nhap rong!");
             return;
         }
@@ -98,6 +104,4 @@ public class QuanLyPhieuNhap {
         quanLyPhieuNhap.xoaPhieuNhap(maPhieuNhap);
         HandleDraw.handleSystemTxt("Da xoa phieu nhap thanh cong!");
     }
-
-
 }

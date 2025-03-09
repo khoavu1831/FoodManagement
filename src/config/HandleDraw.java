@@ -1,4 +1,4 @@
-package views;
+package config;
 
 public class HandleDraw {
     // Text colors

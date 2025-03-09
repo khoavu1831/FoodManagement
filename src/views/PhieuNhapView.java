@@ -3,41 +3,29 @@ package views;
 import controller.QuanLyNhanVien;
 import controller.QuanLyPhieuNhap;
 import controller.QuanLySanPham;
-import java.util.Scanner;
 
 public class PhieuNhapView {
-    Menu menu;
-    Scanner sc = new Scanner(System.in);
-    QuanLyPhieuNhap quanLyPhieuNhap = new QuanLyPhieuNhap();
-    QuanLySanPham quanLySanPham = new QuanLySanPham();
-    QuanLyNhanVien quanLyNhanVien;
+    private Menu menu;
+    private QuanLyNhanVien quanLyNhanVien;
+    private QuanLyPhieuNhap quanLyPhieuNhap;
+    private QuanLySanPham quanLySanPham;
 
-    public PhieuNhapView(Menu menu, QuanLyNhanVien quanLyNhanVien) {
+    public PhieuNhapView(Menu menu, QuanLyNhanVien quanLyNhanVien, QuanLySanPham quanLySanPham) {
         this.menu = menu;
         this.quanLyNhanVien = quanLyNhanVien;
-        this.quanLyPhieuNhap = new QuanLyPhieuNhap();
-        this.quanLySanPham = new QuanLySanPham();
+        this.quanLyPhieuNhap = new QuanLyPhieuNhap(quanLySanPham);
+        this.quanLySanPham = quanLySanPham;
     }
 
     public void showTaoPhieuNhap() {
-        HandleDraw.handleDrawBoard("        TAO PHIEU NHAP        ", HandleDraw.TITLE_TXT);
-
-        // Nhap thong tin phieu nhap
         quanLyPhieuNhap.taoPhieuNhap(quanLyNhanVien, menu, quanLyPhieuNhap);
     }
 
     public void showDanhSachPhieuNhap() {
-        HandleDraw.handleDrawBoard("        DANH SACH PHIEU NHAP        ", HandleDraw.TITLE_TXT);
-
-        // In danh sach phieu nhap
         quanLyPhieuNhap.xuatDanhSachPhieuNhap(quanLyPhieuNhap, menu);
     }
 
     public void showXoaPhieuNhap() {
-        HandleDraw.handleDrawBoard("        XOA PHIEU NHAP        ", HandleDraw.TITLE_TXT);
-
-        showDanhSachPhieuNhap();
-        // Xoa phieu nhap
         quanLyPhieuNhap.xoaDanhSachPhieuNhap(quanLyPhieuNhap, menu);
     }
 }

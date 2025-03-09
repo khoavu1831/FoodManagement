@@ -2,7 +2,10 @@ package views;
 
 import java.util.Scanner;
 
+import config.HandleDraw;
 import controller.QuanLyNhanVien;
+import controller.QuanLyPhieuNhap;
+import controller.QuanLySanPham;
 
 public class Menu {
     Scanner sc = new Scanner(System.in);
@@ -10,21 +13,21 @@ public class Menu {
     NhanVienView nvView;
     PhieuNhapView pnView;
     PhieuXuatView pxView;
+    SanPhamView spView;
+    QuanLySanPham quanLySanPham; // Thêm QuanLySanPham
 
     public Menu() {
         this.quanLyNhanVien = new QuanLyNhanVien();
+        this.quanLySanPham = new QuanLySanPham(); // Khởi tạo QuanLySanPham
         this.nvView = new NhanVienView(this, quanLyNhanVien);
-        this.pnView = new PhieuNhapView(this, quanLyNhanVien);
+        this.pnView = new PhieuNhapView(this, quanLyNhanVien, quanLySanPham); // Truyền QuanLySanPham vào PhieuNhapView
+        this.spView = new SanPhamView(this, quanLySanPham);
         // this.pxView = new PhieuXuatView(this, quanLyNhanVien);
     }
 
     public void showMenu() {
-        // In ra menu chao
         HandleDraw.handleDrawBoard("   HE THONG QUAN LY KHO THUC PHAM LEGIT2.0   ", HandleDraw.TITLE_TXT);
-        // Thong bao nhap ten nhan vien
         nvView.showNhanVienMenu();
-
-        // Hien thi menu chinh
         showMainMenu();
     }
 
@@ -63,7 +66,7 @@ public class Menu {
 
     public void showPhieuNhapMenu() {
         String nhapMenuString = "        QUAN LY PHIEU NHAP        ";
-        HandleDraw.handleDrawBoard(nhapMenuString,  HandleDraw.TITLE_TXT);
+        HandleDraw.handleDrawBoard(nhapMenuString, HandleDraw.TITLE_TXT);
         HandleDraw.handlePrintln("1. Tao phieu nhap", HandleDraw.BRIGHT_RED);
         HandleDraw.handlePrintln("2. Xem danh sach phieu nhap", HandleDraw.CYAN);
         HandleDraw.handlePrintln("3. Xoa phieu nhap", HandleDraw.PURPLE);
@@ -73,7 +76,7 @@ public class Menu {
 
         int chon = sc.nextInt();
         HandleDraw.handleEndline(1);
-        
+
         switch (chon) {
             case 1:
                 pnView.showTaoPhieuNhap();
@@ -98,7 +101,7 @@ public class Menu {
 
     public void showPhieuXuatMenu() {
         String xuatMenuString = "        QUAN LY PHIEU XUAT        ";
-        HandleDraw.handleDrawBoard(xuatMenuString,  HandleDraw.TITLE_TXT);
+        HandleDraw.handleDrawBoard(xuatMenuString, HandleDraw.TITLE_TXT);
         System.out.println(" 1. Tao phieu xuat ");
         System.out.println(" 2. Xem danh sach phieu xuat ");
         System.out.println(" 3. Quay lai ");
@@ -126,7 +129,7 @@ public class Menu {
 
     public void showSanPhamMenu() {
         String spMenuString = "        QUAN LY SAN PHAM        ";
-        HandleDraw.handleDrawBoard(spMenuString,  HandleDraw.TITLE_TXT);
+        HandleDraw.handleDrawBoard(spMenuString, HandleDraw.TITLE_TXT);
         System.out.println(" 1. Xem danh sach san pham ");
         System.out.println(" 2. Sua san pham ");
         System.out.println(" 3. Xoa san pham ");
@@ -139,13 +142,16 @@ public class Menu {
 
         switch (chon) {
             case 1:
-                System.out.println("Xem danh sach san pham");
+                spView.showDanhSachSanPham();
+                showSanPhamMenu();
                 break;
             case 2:
-                System.out.println("Sua san pham");
+                spView.showSuaSanPham();
+                showSanPhamMenu();
                 break;
             case 3:
-                System.out.println("Xoa san pham");
+                spView.showXoaSanPham();
+                showSanPhamMenu();
                 break;
             case 4:
                 showMainMenu();
@@ -155,6 +161,4 @@ public class Menu {
                 break;
         }
     }
-    
-    
 }
