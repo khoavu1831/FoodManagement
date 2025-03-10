@@ -70,7 +70,7 @@ public class Menu {
         HandleDraw.handlePrintln("2. Xem danh sach phieu nhap", "");
         HandleDraw.handlePrintln("3. Xoa phieu nhap", "");
         HandleDraw.handlePrintln("4. Quay lai", HandleDraw.SYSTEM_TXT);
-        System.out.println("=".repeat(nhapMenuString.length()));
+        HandleDraw.handlePrintln("=".repeat(nhapMenuString.length()), "");
         HandleDraw.handleReplyTxt("Chon chuc nang");
 
 
@@ -134,7 +134,7 @@ public class Menu {
         HandleDraw.handlePrintln(" 2. Sua san pham ", "");
         HandleDraw.handlePrintln(" 3. Xoa san pham ", "");
         HandleDraw.handlePrintln(" 4. Quay lai", HandleDraw.SYSTEM_TXT);
-        System.out.println("=".repeat(spMenuString.length()));
+        HandleDraw.handlePrintln("=".repeat(spMenuString.length()), "");
         HandleDraw.handleReplyTxt("Chon chuc nang");
         int chon = sc.nextInt();
         HandleDraw.handleEndline(1);

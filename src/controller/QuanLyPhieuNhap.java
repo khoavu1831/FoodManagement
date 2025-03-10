@@ -75,7 +75,7 @@ public class QuanLyPhieuNhap {
             HandleDraw.handleSystemTxt("Danh sach phieu nhap rong!");
             return;
         }
-        HandleDraw.handleTitleYellowTxt("Danh sach phieu nhap");
+        HandleDraw.handleTitleYellowTxt("Danh sach phieu nhap", 6);
         quanLyPhieuNhap.getDanhSachPhieuNhap().forEach(phieuNhap -> {
             HandleDraw.handleTitleList("Ma phieu nhap:", phieuNhap.getMaPhieuNhap());
             HandleDraw.handleTitleList("Nha cung cap:", phieuNhap.getTenNhaCungCap());

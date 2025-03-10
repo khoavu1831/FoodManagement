@@ -52,8 +52,8 @@ public class HandleDraw {
         handlePrintln(str2, WHITE);
     }
 
-    public static void handleTitleYellowTxt(String str) {
-        handlePrintln("      <" + str.toUpperCase() + ">", YELLOW);
+    public static void handleTitleYellowTxt(String str, int lineCount) {
+        handlePrintln(" ".repeat(lineCount) + "<" + str.toUpperCase() + ">", YELLOW);
     }
 
     public static void handleEndline(int line) {

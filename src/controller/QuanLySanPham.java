@@ -41,10 +41,10 @@ public class QuanLySanPham {
             return;
         }
 
-        HandleDraw.handleDrawBoard(" DANH SACH SAN PHAM ", HandleDraw.TITLE_TXT);
-        System.out.format("%s%-25s %s%-15s %s%-15s %s%-15s %s %n", HandleDraw.RED, "Ten san pham", HandleDraw.GREEN,"So luong", HandleDraw.BLUE," Gia nhap", HandleDraw.YELLOW, "Gia ban", HandleDraw.RESET);
+        HandleDraw.handleTitleYellowTxt("Danh sach san pham", 0);
+        System.out.format(" %s%-25s %s%-15s %s%-15s %s%-15s %s %n", HandleDraw.RED, "Ten san pham", HandleDraw.GREEN,"So luong", HandleDraw.BLUE," Gia nhap", HandleDraw.YELLOW, "Gia ban", HandleDraw.RESET);
         for (SanPham sp : danhSachSanPham) {
-            System.out.format("%-25s %-15d %-15.2f %-15.2f %n", sp.getTenSanPham(), sp.getSoLuong(), sp.getGiaNhap(), sp.getGiaBan());
+            System.out.format(" %-25s %-15d %-15.2f %-15.2f %n", sp.getTenSanPham(), sp.getSoLuong(), sp.getGiaNhap(), sp.getGiaBan());
         }
     }
 
