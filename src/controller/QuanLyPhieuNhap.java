@@ -70,7 +70,7 @@ public class QuanLyPhieuNhap {
         HandleDraw.handleSystemTxt("Da tao phieu nhap thanh cong!");
     }
 
-    public void xuatDanhSachPhieuNhap(QuanLyPhieuNhap quanLyPhieuNhap, Menu menu) {
+    public void xuatDanhSachPhieuNhap(QuanLyPhieuNhap quanLyPhieuNhap) {
         if (quanLyPhieuNhap.getDanhSachPhieuNhap().isEmpty()) {
             HandleDraw.handleSystemTxt("Danh sach phieu nhap rong!");
             return;
@@ -89,7 +89,7 @@ public class QuanLyPhieuNhap {
                 HandleDraw.handlePrintln("     ----------------------", "");
             });
             HandleDraw.handleTitleList("Tong tien:", String.valueOf(phieuNhap.tongTien()));
-            System.out.println("----------------------------------");
+            HandleDraw.handlePrintln("----------------------------------", "");
             HandleDraw.handleEndline(1);
         });
     }

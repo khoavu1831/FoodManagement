@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import config.HandleDraw;
 import controller.QuanLyNhanVien;
-import controller.QuanLyPhieuNhap;
 import controller.QuanLySanPham;
 
 public class Menu {
@@ -21,6 +20,7 @@ public class Menu {
         this.quanLySanPham = new QuanLySanPham();
         this.nvView = new NhanVienView(this, quanLyNhanVien);
         this.pnView = new PhieuNhapView(this, quanLyNhanVien, quanLySanPham);
+        this.pxView = new PhieuXuatView(this, quanLyNhanVien, quanLySanPham);
         this.spView = new SanPhamView(this, quanLySanPham);
     }
 
@@ -73,7 +73,6 @@ public class Menu {
         HandleDraw.handlePrintln("=".repeat(nhapMenuString.length()), "");
         HandleDraw.handleReplyTxt("Chon chuc nang");
 
-
         int chon = sc.nextInt();
         HandleDraw.handleEndline(1);
 
@@ -102,10 +101,10 @@ public class Menu {
     public void showPhieuXuatMenu() {
         String xuatMenuString = "        QUAN LY PHIEU XUAT        ";
         HandleDraw.handleDrawBoard(xuatMenuString, HandleDraw.TITLE_TXT);
-        System.out.println(" 1. Tao phieu xuat ");
-        System.out.println(" 2. Xem danh sach phieu xuat ");
-        System.out.println(" 3. Quay lai ");
-        System.out.println("=".repeat(xuatMenuString.length()));
+        HandleDraw.handlePrintln("1. Tao phieu xuat", "");
+        HandleDraw.handlePrintln("2. Xem danh sach phieu xuat ", "");
+        HandleDraw.handlePrintln("3. Quay lai ", HandleDraw.SYSTEM_TXT);
+        HandleDraw.handlePrintln("=".repeat(xuatMenuString.length()), "");
         System.out.print(">Chon chuc nang: ");
 
         int chon = sc.nextInt();
@@ -113,10 +112,12 @@ public class Menu {
 
         switch (chon) {
             case 1:
-                System.out.println("Tao phieu xuat");
+                pxView.showPhieuXuatMenu();
+                showPhieuXuatMenu();
                 break;
             case 2:
-                System.out.println("Xem danh sach phieu xuat");
+                pxView.showDanhSachPhieuXuat();
+                showPhieuXuatMenu();
                 break;
             case 3:
                 showMainMenu();
