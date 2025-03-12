@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import config.HandleDraw;
+import config.Logic;
 import models.PhieuNhap;
 import models.SanPham;
 
@@ -33,6 +34,12 @@ public class QuanLyPhieuNhap {
     public void taoPhieuNhap(QuanLyNhanVien quanLyNhanVien, QuanLyPhieuNhap quanLyPhieuNhap) {
         HandleDraw.handleReplyTxt("Nhap ma phieu nhap: ");
         String maPhieuNhap = sc.nextLine();
+
+        if (Logic.isDuplicateID(maPhieuNhap, danhSachPhieuNhap)) {
+            HandleDraw.handleSystemTxt("Ma phieu nhap da ton tai.");
+            return;
+        }
+
         HandleDraw.handleReplyTxt("Nhap ten nha cung cap: ");
         String tenNcc = sc.nextLine();
         String tenNv = quanLyNhanVien.getTenNhanVien();

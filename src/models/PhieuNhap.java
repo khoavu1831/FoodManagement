@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public class PhieuNhap {
+public class PhieuNhap implements Interface {
     private String maPhieuNhap;
     private String tenNhaCungCap;
     private String tenNhanVienNhap;
@@ -38,4 +38,10 @@ public class PhieuNhap {
         }
         return tongTien;
     }
+
+    @Override
+    public String getId() {
+        return maPhieuNhap;
+    }
+    
 }

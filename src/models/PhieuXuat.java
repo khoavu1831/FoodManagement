@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public class PhieuXuat {
+public class PhieuXuat implements Interface{
     private String maPhieuXuat;
     private String tenNhanVienXuat;
     private List<SanPham> danhSachSanPham;
@@ -43,6 +43,11 @@ public class PhieuXuat {
             tongTien += sanPham.getGiaBan() * sanPham.getSoLuongXuat();
         }
         return tongTien;
+    }
+
+    @Override
+    public String getId() {
+        return maPhieuXuat;
     }
 
 }
