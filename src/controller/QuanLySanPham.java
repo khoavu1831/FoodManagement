@@ -22,7 +22,7 @@ public class QuanLySanPham {
     public void themSanPham(SanPham sanPham) {
         SanPham sp = timSanPham(sanPham.getTenSanPham());
         if (sp != null) {
-            sp.setSoLuong(sp.getSoLuong() + sanPham.getSoLuong());
+            sp.setSoLuongNhap(sp.getSoLuongNhap() + sanPham.getSoLuongNhap());
         } else {
             danhSachSanPham.add(sanPham);
         }
@@ -44,7 +44,7 @@ public class QuanLySanPham {
         HandleDraw.handleTitleYellowTxt("Danh sach san pham", 0);
         System.out.format(" %s%-25s %s%-15s %s%-15s %s%-15s %s %n", HandleDraw.RED, "Ten san pham", HandleDraw.GREEN,"So luong", HandleDraw.BLUE," Gia nhap", HandleDraw.YELLOW, "Gia ban", HandleDraw.RESET);
         for (SanPham sp : danhSachSanPham) {
-            System.out.format(" %-25s %-15d %-15.2f %-15.2f %n", sp.getTenSanPham(), sp.getSoLuong(), sp.getGiaNhap(), sp.getGiaBan());
+            System.out.format(" %-25s %-15d %-15.2f %-15.2f %n", sp.getTenSanPham(), sp.getSoLuongNhap(), sp.getGiaNhap(), sp.getGiaBan());
         }
     }
 

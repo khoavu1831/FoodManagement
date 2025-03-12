@@ -3,11 +3,9 @@ package views;
 import controller.QuanLySanPham;
 
 public class SanPhamView {
-    private Menu menu;
     private QuanLySanPham quanLySanPham;
 
-    public SanPhamView(Menu menu, QuanLySanPham quanLySanPham) {
-        this.menu = menu;
+    public SanPhamView(QuanLySanPham quanLySanPham) {
         this.quanLySanPham = quanLySanPham;
     }
 

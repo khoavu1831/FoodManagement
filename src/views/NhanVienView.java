@@ -5,10 +5,8 @@ import controller.QuanLyNhanVien;
 
 public class NhanVienView {
     QuanLyNhanVien quanLyNhanVien;
-    Menu menu;
 
-    public NhanVienView(Menu menu, QuanLyNhanVien quanLyNhanVien) {
-        this.menu = menu;
+    public NhanVienView(QuanLyNhanVien quanLyNhanVien) {
         this.quanLyNhanVien = quanLyNhanVien;
     }
 

@@ -7,12 +7,11 @@ import java.util.Scanner;
 import config.HandleDraw;
 import models.PhieuNhap;
 import models.SanPham;
-import views.Menu;
 
 public class QuanLyPhieuNhap {
     Scanner sc = new Scanner(System.in);
     private List<PhieuNhap> danhSachPhieuNhap;
-    private QuanLySanPham quanLySanPham; 
+    private QuanLySanPham quanLySanPham;
 
     public QuanLyPhieuNhap(QuanLySanPham quanLySanPham) {
         this.danhSachPhieuNhap = new ArrayList<>();
@@ -31,7 +30,7 @@ public class QuanLyPhieuNhap {
         return danhSachPhieuNhap;
     }
 
-    public void taoPhieuNhap(QuanLyNhanVien quanLyNhanVien, Menu menu, QuanLyPhieuNhap quanLyPhieuNhap) {
+    public void taoPhieuNhap(QuanLyNhanVien quanLyNhanVien, QuanLyPhieuNhap quanLyPhieuNhap) {
         HandleDraw.handleReplyTxt("Nhap ma phieu nhap: ");
         String maPhieuNhap = sc.nextLine();
         HandleDraw.handleReplyTxt("Nhap ten nha cung cap: ");
@@ -54,10 +53,10 @@ public class QuanLyPhieuNhap {
 
             SanPham sanPham = new SanPham(tenSanPham, soLuong, giaNhap);
 
-            // Luu san pham vao danh sach san pham (dung de hien)
+            // Luu san pham vao danh sach san pham
             danhSachSanPham.add(sanPham);
 
-            // Luu san pham vao
+            // Them san pham vao danh sach
             quanLySanPham.themSanPham(sanPham);
 
             HandleDraw.handleReplyTxt("Ban co muon nhap san pham khac khong? (y/n): ");
@@ -83,9 +82,10 @@ public class QuanLyPhieuNhap {
             HandleDraw.handleTitleList("Danh sach san pham:", "");
             phieuNhap.getDanhSachSanPham().forEach(sanPham -> {
                 HandleDraw.handleChildTitleList("Ten san pham: ", sanPham.getTenSanPham());
-                HandleDraw.handleChildTitleList("So luong: ", String.valueOf(sanPham.getSoLuong()));
+                HandleDraw.handleChildTitleList("So luong: ", String.valueOf(sanPham.getSoLuongNhap()));
                 HandleDraw.handleChildTitleList("Gia nhap: ", String.valueOf(sanPham.getGiaNhap()));
-                HandleDraw.handleChildTitleList("Thanh tien = ", String.valueOf(sanPham.getGiaNhap() * sanPham.getSoLuong()));
+                HandleDraw.handleChildTitleList("Thanh tien = ",
+                        String.valueOf(sanPham.getGiaNhap() * sanPham.getSoLuongNhap()));
                 HandleDraw.handlePrintln("     ----------------------", "");
             });
             HandleDraw.handleTitleList("Tong tien:", String.valueOf(phieuNhap.tongTien()));
@@ -94,11 +94,12 @@ public class QuanLyPhieuNhap {
         });
     }
 
-    public void xoaDanhSachPhieuNhap(QuanLyPhieuNhap quanLyPhieuNhap, Menu menu) {
+    public void xoaDanhSachPhieuNhap(QuanLyPhieuNhap quanLyPhieuNhap) {
         HandleDraw.handleEndline(1);
         HandleDraw.handleReplyTxt("Nhap ma phieu nhap can xoa: ");
         String maPhieuNhap = sc.nextLine();
-        if (quanLyPhieuNhap.getDanhSachPhieuNhap().stream().noneMatch(phieuNhap -> phieuNhap.getMaPhieuNhap().equals(maPhieuNhap))) {
+        if (quanLyPhieuNhap.getDanhSachPhieuNhap().stream()
+                .noneMatch(phieuNhap -> phieuNhap.getMaPhieuNhap().equals(maPhieuNhap))) {
             HandleDraw.handleSystemTxt("Khong tim thay phieu nhap!");
             return;
         }

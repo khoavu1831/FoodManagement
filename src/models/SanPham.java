@@ -2,14 +2,16 @@ package models;
 
 public class SanPham {
     private String tenSanPham;
-    private int soLuong;
+    private int soLuongNhap;
+    private int soLuongXuat;
     private double giaNhap;
     private double giaBan;
 
-    public SanPham(String tenSanPham, int soLuong, double giaNhap) {
+    public SanPham(String tenSanPham, int soLuongNhap, double giaNhap) {
         this.tenSanPham = tenSanPham;
-        this.soLuong = soLuong;
+        this.soLuongNhap = soLuongNhap;
         this.giaNhap = giaNhap;
+        this.soLuongXuat = 0;
         this.giaBan = 0;
     }
 
@@ -21,12 +23,12 @@ public class SanPham {
         this.tenSanPham = tenSanPham;
     }
 
-    public int getSoLuong() {
-        return soLuong;
+    public int getSoLuongNhap() {
+        return soLuongNhap;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setSoLuongNhap(int soLuongNhap) {
+        this.soLuongNhap = soLuongNhap;
     }
 
     public double getGiaNhap() {
@@ -43,5 +45,13 @@ public class SanPham {
 
     public void setGiaBan(double giaBan) {
         this.giaBan = giaBan;
+    }
+
+    public int getSoLuongXuat() {
+        return soLuongXuat;
+    }
+
+    public void setSoLuongXuat(int soLuongXuat) {
+        this.soLuongXuat = soLuongXuat;
     }
 }

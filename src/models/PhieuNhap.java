@@ -34,7 +34,7 @@ public class PhieuNhap {
     public double tongTien() {
         double tongTien = 0;
         for (SanPham sanPham : danhSachSanPham) {
-            tongTien += sanPham.getGiaNhap() * sanPham.getSoLuong();
+            tongTien += sanPham.getGiaNhap() * sanPham.getSoLuongNhap();
         }
         return tongTien;
     }

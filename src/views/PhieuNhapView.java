@@ -5,18 +5,16 @@ import controller.QuanLyPhieuNhap;
 import controller.QuanLySanPham;
 
 public class PhieuNhapView {
-    private Menu menu;
     private QuanLyNhanVien quanLyNhanVien;
     private QuanLyPhieuNhap quanLyPhieuNhap;
 
-    public PhieuNhapView(Menu menu, QuanLyNhanVien quanLyNhanVien, QuanLySanPham quanLySanPham) {
-        this.menu = menu;
+    public PhieuNhapView(QuanLyNhanVien quanLyNhanVien, QuanLySanPham quanLySanPham) {
         this.quanLyNhanVien = quanLyNhanVien;
         this.quanLyPhieuNhap = new QuanLyPhieuNhap(quanLySanPham);
     }
 
     public void showTaoPhieuNhap() {
-        quanLyPhieuNhap.taoPhieuNhap(quanLyNhanVien, menu, quanLyPhieuNhap);
+        quanLyPhieuNhap.taoPhieuNhap(quanLyNhanVien, quanLyPhieuNhap);
     }
 
     public void showDanhSachPhieuNhap() {
@@ -24,6 +22,6 @@ public class PhieuNhapView {
     }
 
     public void showXoaPhieuNhap() {
-        quanLyPhieuNhap.xoaDanhSachPhieuNhap(quanLyPhieuNhap, menu);
+        quanLyPhieuNhap.xoaDanhSachPhieuNhap(quanLyPhieuNhap);
     }
 }

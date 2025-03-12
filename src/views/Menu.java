@@ -18,10 +18,10 @@ public class Menu {
     public Menu() {
         this.quanLyNhanVien = new QuanLyNhanVien();
         this.quanLySanPham = new QuanLySanPham();
-        this.nvView = new NhanVienView(this, quanLyNhanVien);
-        this.pnView = new PhieuNhapView(this, quanLyNhanVien, quanLySanPham);
-        this.pxView = new PhieuXuatView(this, quanLyNhanVien, quanLySanPham);
-        this.spView = new SanPhamView(this, quanLySanPham);
+        this.nvView = new NhanVienView(quanLyNhanVien);
+        this.pnView = new PhieuNhapView(quanLyNhanVien, quanLySanPham);
+        this.pxView = new PhieuXuatView(quanLyNhanVien, quanLySanPham);
+        this.spView = new SanPhamView(quanLySanPham);
     }
 
     public void showMenu() {
@@ -70,7 +70,7 @@ public class Menu {
         HandleDraw.handlePrintln("2. Xem danh sach phieu nhap", "");
         HandleDraw.handlePrintln("3. Xoa phieu nhap", "");
         HandleDraw.handlePrintln("4. Quay lai", HandleDraw.SYSTEM_TXT);
-        HandleDraw.handlePrintln("=".repeat(nhapMenuString.length()), "");
+        System.out.println("=".repeat(nhapMenuString.length()));
         HandleDraw.handleReplyTxt("Chon chuc nang");
 
         int chon = sc.nextInt();
@@ -93,7 +93,7 @@ public class Menu {
                 showMainMenu();
                 break;
             default:
-                System.out.println("Chuc nang khong ton tai!");
+                HandleDraw.handleSystemTxt("Loi: Chuc nang khong ton tai!");
                 break;
         }
     }
@@ -104,9 +104,8 @@ public class Menu {
         HandleDraw.handlePrintln("1. Tao phieu xuat", "");
         HandleDraw.handlePrintln("2. Xem danh sach phieu xuat ", "");
         HandleDraw.handlePrintln("3. Quay lai ", HandleDraw.SYSTEM_TXT);
-        HandleDraw.handlePrintln("=".repeat(xuatMenuString.length()), "");
-        System.out.print(">Chon chuc nang: ");
-
+        System.out.println("=".repeat(xuatMenuString.length()));
+        HandleDraw.handleReplyTxt("Chon chuc nang");
         int chon = sc.nextInt();
         HandleDraw.handleEndline(1);
 
@@ -123,7 +122,7 @@ public class Menu {
                 showMainMenu();
                 break;
             default:
-                System.out.println("Chuc nang khong ton tai!");
+                HandleDraw.handleSystemTxt("Loi: Chuc nang khong ton tai!");
                 break;
         }
     }
@@ -135,7 +134,7 @@ public class Menu {
         HandleDraw.handlePrintln(" 2. Sua san pham ", "");
         HandleDraw.handlePrintln(" 3. Xoa san pham ", "");
         HandleDraw.handlePrintln(" 4. Quay lai", HandleDraw.SYSTEM_TXT);
-        HandleDraw.handlePrintln("=".repeat(spMenuString.length()), "");
+        System.out.println("=".repeat(spMenuString.length()));
         HandleDraw.handleReplyTxt("Chon chuc nang");
         int chon = sc.nextInt();
         HandleDraw.handleEndline(1);
@@ -157,7 +156,7 @@ public class Menu {
                 showMainMenu();
                 break;
             default:
-                System.out.println("Chuc nang khong ton tai!");
+                HandleDraw.handleSystemTxt("Loi: Chuc nang khong ton tai!");
                 break;
         }
     }

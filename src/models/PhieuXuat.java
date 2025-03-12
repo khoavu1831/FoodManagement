@@ -40,7 +40,7 @@ public class PhieuXuat {
     public double TongTien() {
         double tongTien = 0;
         for (SanPham sanPham : danhSachSanPham) {
-            tongTien += sanPham.getGiaBan() * sanPham.getSoLuong();
+            tongTien += sanPham.getGiaBan() * sanPham.getSoLuongXuat();
         }
         return tongTien;
     }
