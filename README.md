@@ -25,9 +25,9 @@
 + ...
 >> Thoát (Kết thúc chương trình)
 ## Ver 2.0.0
-> File working
-> Constraint
-> 
++ File working
++ Constraint
++ ... 
 ## Tác Giả
 + Người dẫn dắt dự án: *KaiWu*
 + Người bú ké dự án: *DoanPLuu*
