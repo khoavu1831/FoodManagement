@@ -16,4 +16,24 @@ public class Logic {
         }
         return false;
     }
+
+    public static <T extends Interface> String autoCreateID(String haiKiTuDinhDanh, List<T> danhSach) {
+        int maxNum = 0;
+
+        for (T item : danhSach) {
+            String id = item.getId();
+            if (id != null && id.startsWith(haiKiTuDinhDanh)) {
+                try {
+                    String numPart = id.substring(haiKiTuDinhDanh.length());
+                    int num = Integer.parseInt(numPart);
+                    maxNum = Math.max(maxNum, num);
+                } catch (NumberFormatException e) {
+                    continue;
+                }
+            }
+        }
+        maxNum++;
+        return String.format("%s%03d", haiKiTuDinhDanh, maxNum);
+    }
+
 }

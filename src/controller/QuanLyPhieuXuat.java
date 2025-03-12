@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import config.FileHandler;
 import config.HandleDraw;
+import config.Logic;
 import models.PhieuXuat;
 import models.SanPham;
 
@@ -14,12 +16,13 @@ public class QuanLyPhieuXuat {
     private QuanLySanPham quanLySanPham;
 
     public QuanLyPhieuXuat(QuanLySanPham quanLySanPham) {
-        this.danhSachPhieuXuat = new ArrayList<>();
         this.quanLySanPham = quanLySanPham;
+        this.danhSachPhieuXuat = FileHandler.readPhieuXuat();
     }
 
     public void themPhieuXuat(PhieuXuat phieuXuat) {
         this.danhSachPhieuXuat.add(phieuXuat);
+        FileHandler.writePhieuXuat(danhSachPhieuXuat);
     }
 
     public List<PhieuXuat> getDanhSachPhieuXuat() {
@@ -33,8 +36,9 @@ public class QuanLyPhieuXuat {
         }
 
         String tenNv = quanLyNhanVien.getTenNhanVien();
-        HandleDraw.handleReplyTxt("Nhap ma phieu xuat");
-        String maPhieuXuat = sc.nextLine();
+        HandleDraw.handleReplyTxt("Ma phieu xuat");
+        String maPhieuXuat = Logic.autoCreateID("PX", danhSachPhieuXuat);
+        HandleDraw.handlePrintln(maPhieuXuat, HandleDraw.REPLY_TXT);
 
         List<SanPham> danhSachSanPhamXuat = new ArrayList<>();
         boolean isSanPham = true;

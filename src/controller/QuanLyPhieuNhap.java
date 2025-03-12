@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import config.FileHandler;
 import config.HandleDraw;
 import config.Logic;
 import models.PhieuNhap;
@@ -15,16 +16,18 @@ public class QuanLyPhieuNhap {
     private QuanLySanPham quanLySanPham;
 
     public QuanLyPhieuNhap(QuanLySanPham quanLySanPham) {
-        this.danhSachPhieuNhap = new ArrayList<>();
         this.quanLySanPham = quanLySanPham;
+        this.danhSachPhieuNhap = FileHandler.readPhieuNhap();
     }
 
     public void themPhieuNhap(PhieuNhap phieuNhap) {
         this.danhSachPhieuNhap.add(phieuNhap);
+        FileHandler.writePhieuNhap(danhSachPhieuNhap);
     }
 
     public void xoaPhieuNhap(String maPhieuNhap) {
         danhSachPhieuNhap.removeIf(phieuNhap -> phieuNhap.getMaPhieuNhap().equals(maPhieuNhap));
+        FileHandler.writePhieuNhap(danhSachPhieuNhap);
     }
 
     public List<PhieuNhap> getDanhSachPhieuNhap() {
@@ -32,20 +35,15 @@ public class QuanLyPhieuNhap {
     }
 
     public void taoPhieuNhap(QuanLyNhanVien quanLyNhanVien, QuanLyPhieuNhap quanLyPhieuNhap) {
-        HandleDraw.handleReplyTxt("Nhap ma phieu nhap: ");
-        String maPhieuNhap = sc.nextLine();
-
-        if (Logic.isDuplicateID(maPhieuNhap, danhSachPhieuNhap)) {
-            HandleDraw.handleSystemTxt("Ma phieu nhap da ton tai.");
-            return;
-        }
-
+        HandleDraw.handleReplyTxt("Ma phieu nhap");
+        String maPhieuNhap = Logic.autoCreateID("PN", danhSachPhieuNhap);
+        HandleDraw.handlePrintln(maPhieuNhap, HandleDraw.GREEN);
         HandleDraw.handleReplyTxt("Nhap ten nha cung cap: ");
-        String tenNcc = sc.nextLine();
+        String tenNcc = sc.nextLine().trim();
         String tenNv = quanLyNhanVien.getTenNhanVien();
         HandleDraw.handleReplyTxt("Nhan Vien nhap: ");
         HandleDraw.handlePrint(tenNv, HandleDraw.WHITE);
-
+    
         List<SanPham> danhSachSanPham = new ArrayList<>();
         boolean isNhapSanPham = true;
         while (isNhapSanPham) {
@@ -57,22 +55,26 @@ public class QuanLyPhieuNhap {
             int soLuong = Integer.parseInt(sc.nextLine());
             HandleDraw.handleReplyTxt("Nhap gia nhap: ");
             double giaNhap = Double.parseDouble(sc.nextLine());
-
+    
             SanPham sanPham = new SanPham(tenSanPham, soLuong, giaNhap);
-
-            // Luu san pham vao danh sach san pham
+    
+            // Luu san pham vao danh sach san pham cua phieu nhap
             danhSachSanPham.add(sanPham);
-
-            // Them san pham vao danh sach
+    
+            // Them san pham vao danh sach san pham tong trong QuanLySanPham
             quanLySanPham.themSanPham(sanPham);
-
+    
             HandleDraw.handleReplyTxt("Ban co muon nhap san pham khac khong? (y/n): ");
             String chon = sc.nextLine();
             isNhapSanPham = chon.equalsIgnoreCase("y");
         }
-
+    
         PhieuNhap phieuNhap = new PhieuNhap(maPhieuNhap, tenNcc, tenNv, danhSachSanPham);
         quanLyPhieuNhap.themPhieuNhap(phieuNhap);
+    
+        // Sau khi tao phieu nhap, ghi lai san pham tong vao file
+        FileHandler.writeSanPham(quanLySanPham.getDanhSachSanPham());
+    
         HandleDraw.handleSystemTxt("Da tao phieu nhap thanh cong!");
     }
 

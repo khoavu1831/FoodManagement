@@ -1,0 +1,7 @@
+PN001|Kho Food Binh Thai|KAIWU|Dua Leo:140:2.00;Dau Phong:455:34.55;Ca Chua:200:1.50;Khoai Tay:300:2.00;Cam:150:5.00;Chuoi:250:3.00;Oi:100:4.50;
+PN002|Kho B Binh An|KAIWU|Thit Bo Dong Lanh:59:560.00;Thit Ga:80:300.00;Ca Hoi:40:700.00;Tom:60:600.00;Trung Ga:500:1.00;Sua Tuoi:200:10.00;Pho Mai:90:250.00;
+PN003|Kho C Thai Nguyen|KAIWU|Banh Mi:300:2.00;Kem:150:5.00;Bia:400:12.00;Nuoc Ngot:500:8.00;Tra Sua:200:15.00;Cafe:180:20.00;Nuoc Ep:120:18.00;
+PN004|Kho D Ha Noi|KAIWU|Bot Giat:100:30.00;Nuoc Rua Chen:120:15.00;Dau Goi:90:25.00;Xa Phong:200:5.00;Kem Danh Rang:150:10.00;Giay Ve Sinh:300:8.00;Khan Giay:350:6.00;
+PN005|Kho E Da Nang|KAIWU|Dau An:80:20.00;Bot Mi:150:12.00;Gia Vi:200:3.00;Mat Ong:50:50.00;Hat Sen:70:40.00;Tra Xanh:90:15.00;Sua Chua:120:8.00;
+PN006|Kho F Sai Gon|KAIWU|Keo Mut:400:0.50;Banh Trang:300:2.00;Snack:250:3.00;Socola:180:10.00;Banh Quy:200:5.00;Nuoc Tuong:150:7.00;Ruou Vang:60:100.00;
+PN007|Kho G Can Tho|KAIWU|Bap Rang:500:0.50;Gao:300:10.00;Mi Goi:400:2.50;Nuoc Mam:200:15.00;Duong:250:8.00;Muoi:350:1.00;Hat Dieu:100:20.00;

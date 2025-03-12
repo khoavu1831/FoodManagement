@@ -1,10 +1,11 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import config.FileHandler;
 import config.HandleDraw;
+import models.PhieuNhap;
 import models.SanPham;
 
 public class QuanLySanPham {
@@ -12,7 +13,17 @@ public class QuanLySanPham {
     private Scanner sc = new Scanner(System.in);
 
     public QuanLySanPham() {
-        this.danhSachSanPham = new ArrayList<>();
+        this.danhSachSanPham = FileHandler.readSanPham();
+        syncSanPhamFromPhieuNhap(); // Dong bo san pham tu phieu nhap - file
+    }
+
+    private void syncSanPhamFromPhieuNhap() {
+        List<PhieuNhap> danhSachPhieuNhap = FileHandler.readPhieuNhap();
+        for (PhieuNhap phieuNhap : danhSachPhieuNhap) {
+            for (SanPham sanPham : phieuNhap.getDanhSachSanPham()) {
+                themSanPham(sanPham);
+            }
+        }
     }
 
     public List<SanPham> getDanhSachSanPham() {
@@ -23,9 +34,11 @@ public class QuanLySanPham {
         SanPham sp = timSanPham(sanPham.getTenSanPham());
         if (sp != null) {
             sp.setSoLuongNhap(sp.getSoLuongNhap() + sanPham.getSoLuongNhap());
+            sp.setGiaNhap(sanPham.getGiaNhap());
         } else {
             danhSachSanPham.add(sanPham);
         }
+        FileHandler.writeSanPham(danhSachSanPham);
     }
 
     public SanPham timSanPham(String tenSanPham) {
@@ -42,9 +55,11 @@ public class QuanLySanPham {
         }
 
         HandleDraw.handleTitleYellowTxt("Danh sach san pham", 0);
-        System.out.format(" %s%-25s %s%-15s %s%-15s %s%-15s %s %n", HandleDraw.RED, "Ten san pham", HandleDraw.GREEN,"So luong", HandleDraw.BLUE," Gia nhap", HandleDraw.YELLOW, "Gia ban", HandleDraw.RESET);
+        System.out.format(" %s%-25s %s%-15s %s%-15s %s%-15s %s %n", HandleDraw.RED, "Ten san pham", HandleDraw.GREEN,
+                "So luong", HandleDraw.BLUE, " Gia nhap", HandleDraw.YELLOW, "Gia ban", HandleDraw.RESET);
         for (SanPham sp : danhSachSanPham) {
-            System.out.format(" %-25s %-15d %-15.2f %-15.2f %n", sp.getTenSanPham(), sp.getSoLuongNhap(), sp.getGiaNhap(), sp.getGiaBan());
+            System.out.format(" %-25s %-15d %-15.2f %-15.2f %n", sp.getTenSanPham(), sp.getSoLuongNhap(),
+                    sp.getGiaNhap(), sp.getGiaBan());
         }
     }
 
@@ -72,6 +87,7 @@ public class QuanLySanPham {
         }
 
         HandleDraw.handleSystemTxt("Da sua san pham thanh cong!");
+        FileHandler.writeSanPham(danhSachSanPham);
     }
 
     // Thieu dieu kien chi xoa san pham khi so luong = 0
@@ -87,5 +103,6 @@ public class QuanLySanPham {
 
         danhSachSanPham.remove(sp);
         HandleDraw.handleSystemTxt("Da xoa san pham thanh cong!");
+        FileHandler.writeSanPham(danhSachSanPham);
     }
 }
