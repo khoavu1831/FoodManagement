@@ -26,5 +26,5 @@
 
 >> Thoát (Kết thúc chương trình)
 ## Tác Giả
--Người dẫn dắt dự án: *KaiWu*
--Người bú ké dự án: *DoanPLuu*
++ Người dẫn dắt dự án: *KaiWu*
++ Người bú ké dự án: *DoanPLuu*
