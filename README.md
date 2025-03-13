@@ -23,8 +23,12 @@
 + Xem danh sách sản phẩm ✅
 + Xóa sản phẩm _ Khi số lượng = 0 
 + ...
-
 >> Thoát (Kết thúc chương trình)
+## Ver 2.0.0
++ File working
++ Constraint
++ ... 
 ## Tác Giả
 + Người dẫn dắt dự án: *KaiWu*
 + Người bú ké dự án: *DoanPLuu*
++ Powerful Assistant: Grok 3
