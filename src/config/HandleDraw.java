@@ -18,11 +18,12 @@ public class HandleDraw {
     public static final String TITLE_TXT = YELLOW;
     public static final String REPLY_TXT = GREEN;
 
-    private HandleDraw() {}
-    
+    private HandleDraw() {
+    }
+
     public static void handleDrawBoard(String str, String color) {
         System.out.printf("%s %s %n", "=".repeat(str.length()), RESET);
-        System.out.printf("%s %s %s %n", color, str, RESET);    
+        System.out.printf("%s %s %s %n", color, str, RESET);
         System.out.printf("%s %s %n", "=".repeat(str.length()), RESET);
     }
 
@@ -59,6 +60,48 @@ public class HandleDraw {
     public static void handleEndline(int line) {
         for (int i = 0; i < line; i++) {
             System.out.println();
+        }
+    }
+
+    public enum Country {
+        VIETNAM("vietnam", "VND"),
+        USA("usa", "USD"),
+        JAPAN("japan", "JPY"),
+        UK("uk", "GBP"),
+        EU("eu", "EUR");
+
+        private final String name;
+        private final String currency;
+
+        Country(String name, String currency) {
+            this.name = name;
+            this.currency = currency;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getCurrency() {
+            return currency;
+        }
+
+        public static Country fromName(String name) {
+            for (Country country : values()) {
+                if (country.name.equalsIgnoreCase(name.trim())) {
+                    return country;
+                }
+            }
+            return null;
+        }
+    }
+
+    public static void handleCurrency(String countryName) {
+        Country country = Country.fromName(countryName);
+        if (country != null) {
+            handlePrintln(country.getCurrency(), CYAN);
+        } else {
+            handleSystemTxt("Loi don vi tien te: Khong tim thay quoc gia!");
         }
     }
 }

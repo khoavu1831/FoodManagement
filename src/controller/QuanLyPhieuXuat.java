@@ -116,7 +116,7 @@ public class QuanLyPhieuXuat {
                         String.valueOf(sanPham.getGiaBan() * sanPham.getSoLuongXuat()));
                 HandleDraw.handlePrintln("     ----------------------", "");
             });
-            HandleDraw.handleTitleList("Tong tien:", String.valueOf(phieuXuat.TongTien()));
+            HandleDraw.handleTitleList("Tong tien:", String.valueOf(phieuXuat.tongTien()));
             HandleDraw.handlePrintln("----------------------------------", "");
             HandleDraw.handleEndline(1);
         });

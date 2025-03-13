@@ -48,6 +48,14 @@ public class QuanLySanPham {
                 .orElse(null);
     }
 
+    public boolean checkGiaBan(Double giaBanChuaNhap) {
+        return giaBanChuaNhap == 0.0;
+    }
+
+    public String doiMauGiaBan(Double giaBan) {
+        return checkGiaBan(giaBan) ? HandleDraw.RED : HandleDraw.GREEN;
+    }
+
     public void xemDanhSachSanPham() {
         if (danhSachSanPham.isEmpty()) {
             HandleDraw.handleSystemTxt("Danh sach san pham rong!");
@@ -55,17 +63,22 @@ public class QuanLySanPham {
         }
 
         HandleDraw.handleTitleYellowTxt("Danh sach san pham", 0);
-        System.out.format(" %s%-25s %s%-15s %s%-15s %s%-15s %s %n", HandleDraw.RED, "Ten san pham", HandleDraw.GREEN,
+        System.out.format(" %s%-25s %s%-14s %s%-16s %s%-15s %s %n", HandleDraw.RED, "Ten san pham", HandleDraw.GREEN,
                 "So luong", HandleDraw.BLUE, " Gia nhap", HandleDraw.YELLOW, "Gia ban", HandleDraw.RESET);
         for (SanPham sp : danhSachSanPham) {
-            System.out.format(" %-25s %-15d %-15.2f %-15.2f %n", sp.getTenSanPham(), sp.getSoLuongNhap(),
-                    sp.getGiaNhap(), sp.getGiaBan());
+            String giaBanCOLOR = doiMauGiaBan(sp.getGiaBan());
+
+            System.out.format(" %-25s %-15d %-15.2f %s%-15.2f%s %n", 
+                sp.getTenSanPham(), 
+                sp.getSoLuongNhap(), 
+                sp.getGiaNhap(), 
+                giaBanCOLOR, sp.getGiaBan(), HandleDraw.RESET);
         }
     }
 
     // Thieu dieu kien sua ten san pham trung nhau
     public void suaSanPham() {
-        HandleDraw.handleReplyTxt("Nhap ten san pham can sua: ");
+        HandleDraw.handleReplyTxt("Nhap ten san pham can sua");
         String tenSanPham = sc.nextLine();
         SanPham sp = timSanPham(tenSanPham);
 
@@ -74,13 +87,13 @@ public class QuanLySanPham {
             return;
         }
 
-        HandleDraw.handleReplyTxt("Nhap ten moi (nhan Enter de giu nguyen): ");
+        HandleDraw.handleReplyTxt("Nhap ten moi (nhan Enter de giu nguyen)");
         String tenMoi = sc.nextLine();
         if (!tenMoi.isEmpty()) {
             sp.setTenSanPham(tenMoi);
         }
 
-        HandleDraw.handleReplyTxt("Nhap gia ban moi (nhap 0 de giu nguyen): ");
+        HandleDraw.handleReplyTxt("Nhap gia ban moi (nhap 0 de giu nguyen)");
         double giaBanMoi = Double.parseDouble(sc.nextLine());
         if (giaBanMoi > 0) {
             sp.setGiaBan(giaBanMoi);
@@ -92,7 +105,7 @@ public class QuanLySanPham {
 
     // Thieu dieu kien chi xoa san pham khi so luong = 0
     public void xoaSanPham() {
-        HandleDraw.handleReplyTxt("Nhap ten san pham can xoa: ");
+        HandleDraw.handleReplyTxt("Nhap ten san pham can xoa");
         String tenSanPham = sc.nextLine();
         SanPham sp = timSanPham(tenSanPham);
 

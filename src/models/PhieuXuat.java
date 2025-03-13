@@ -37,7 +37,7 @@ public class PhieuXuat implements Interface{
         this.danhSachSanPham = danhSachSanPham;
     }
 
-    public double TongTien() {
+    public double tongTien() {
         double tongTien = 0;
         for (SanPham sanPham : danhSachSanPham) {
             tongTien += sanPham.getGiaBan() * sanPham.getSoLuongXuat();

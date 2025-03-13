@@ -38,7 +38,7 @@ public class QuanLyPhieuNhap {
         HandleDraw.handleReplyTxt("Ma phieu nhap");
         String maPhieuNhap = Logic.autoCreateID("PN", danhSachPhieuNhap);
         HandleDraw.handlePrintln(maPhieuNhap, HandleDraw.GREEN);
-        HandleDraw.handleReplyTxt("Nhap ten nha cung cap: ");
+        HandleDraw.handleReplyTxt("Nhap ten nha cung cap");
         String tenNcc = sc.nextLine().trim();
         String tenNv = quanLyNhanVien.getTenNhanVien();
         HandleDraw.handleReplyTxt("Nhan Vien nhap: ");
@@ -49,11 +49,11 @@ public class QuanLyPhieuNhap {
         while (isNhapSanPham) {
             HandleDraw.handleEndline(2);
             HandleDraw.handleSystemTxt("Nhap thong tin san pham");
-            HandleDraw.handleReplyTxt("Nhap ten san pham: ");
+            HandleDraw.handleReplyTxt("Nhap ten san pham");
             String tenSanPham = sc.nextLine();
-            HandleDraw.handleReplyTxt("Nhap so luong: ");
+            HandleDraw.handleReplyTxt("Nhap so luong");
             int soLuong = Integer.parseInt(sc.nextLine());
-            HandleDraw.handleReplyTxt("Nhap gia nhap: ");
+            HandleDraw.handleReplyTxt("Nhap gia nhap");
             double giaNhap = Double.parseDouble(sc.nextLine());
     
             SanPham sanPham = new SanPham(tenSanPham, soLuong, giaNhap);
@@ -64,7 +64,7 @@ public class QuanLyPhieuNhap {
             // Them san pham vao danh sach san pham tong trong QuanLySanPham
             quanLySanPham.themSanPham(sanPham);
     
-            HandleDraw.handleReplyTxt("Ban co muon nhap san pham khac khong? (y/n): ");
+            HandleDraw.handleReplyTxt("Ban co muon nhap san pham khac khong? (y/n)");
             String chon = sc.nextLine();
             isNhapSanPham = chon.equalsIgnoreCase("y");
         }
@@ -105,7 +105,7 @@ public class QuanLyPhieuNhap {
 
     public void xoaDanhSachPhieuNhap(QuanLyPhieuNhap quanLyPhieuNhap) {
         HandleDraw.handleEndline(1);
-        HandleDraw.handleReplyTxt("Nhap ma phieu nhap can xoa: ");
+        HandleDraw.handleReplyTxt("Nhap ma phieu nhap can xoa");
         String maPhieuNhap = sc.nextLine();
         if (quanLyPhieuNhap.getDanhSachPhieuNhap().stream()
                 .noneMatch(phieuNhap -> phieuNhap.getMaPhieuNhap().equals(maPhieuNhap))) {

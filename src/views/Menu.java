@@ -4,24 +4,35 @@ import java.util.Scanner;
 
 import config.HandleDraw;
 import controller.QuanLyNhanVien;
+import controller.QuanLyPhieuNhap;
+import controller.QuanLyPhieuXuat;
 import controller.QuanLySanPham;
+import controller.QuanLyThongKe;
 
 public class Menu {
     Scanner sc = new Scanner(System.in);
     QuanLyNhanVien quanLyNhanVien;
     QuanLySanPham quanLySanPham;
+    QuanLyPhieuNhap quanLyPhieuNhap;
+    QuanLyPhieuXuat quanLyPhieuXuat;
+    QuanLyThongKe quanLyThongKe;
     NhanVienView nvView;
     PhieuNhapView pnView;
     PhieuXuatView pxView;
     SanPhamView spView;
+    ThongKeView tkView;
 
     public Menu() {
         this.quanLyNhanVien = new QuanLyNhanVien();
         this.quanLySanPham = new QuanLySanPham();
+        this.quanLyPhieuNhap = new QuanLyPhieuNhap(quanLySanPham);
+        this.quanLyPhieuXuat = new QuanLyPhieuXuat(quanLySanPham);
+        this.quanLyThongKe = new QuanLyThongKe(quanLyPhieuNhap, quanLyPhieuXuat);
         this.nvView = new NhanVienView(quanLyNhanVien);
         this.pnView = new PhieuNhapView(quanLyNhanVien, quanLySanPham);
         this.pxView = new PhieuXuatView(quanLyNhanVien, quanLySanPham);
         this.spView = new SanPhamView(quanLySanPham);
+        this.tkView = new ThongKeView(quanLyThongKe);
     }
 
     public void showMenu() {
@@ -36,7 +47,8 @@ public class Menu {
         HandleDraw.handlePrintln(" 1. Quan ly phieu nhap", HandleDraw.WHITE);
         HandleDraw.handlePrintln(" 2. Quan ly phieu xuat", HandleDraw.WHITE);
         HandleDraw.handlePrintln(" 3. Quan ly san pham", HandleDraw.WHITE);
-        HandleDraw.handlePrintln(" 4. Thoat chuong trinh", HandleDraw.SYSTEM_TXT);
+        HandleDraw.handlePrintln(" 4. Thong ke", HandleDraw.WHITE);
+        HandleDraw.handlePrintln(" 5. Thoat chuong trinh", HandleDraw.SYSTEM_TXT);
         System.out.println("=".repeat(mainMenuString.length()));
         HandleDraw.handleReplyTxt("Chon chuc nang");
 
@@ -55,6 +67,10 @@ public class Menu {
                 showSanPhamMenu();
                 break;
             case 4:
+                tkView.showThongKe();
+                showMainMenu();
+                break;
+            case 5:
                 HandleDraw.handleSystemTxt("Chuong trinh ket thuc!");
                 break;
             default:
