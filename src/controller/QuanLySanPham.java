@@ -114,6 +114,12 @@ public class QuanLySanPham {
             return;
         }
 
+        if (sp.getSoLuongNhap() != 0) {
+            int soLuongHienTai = sp.getSoLuongNhap();
+            HandleDraw.handleSystemTxt("Loi: San pham con so luong - So luong hien tai: " + soLuongHienTai);
+            return;
+        } 
+
         danhSachSanPham.remove(sp);
         HandleDraw.handleSystemTxt("Da xoa san pham thanh cong!");
         FileHandler.writeSanPham(danhSachSanPham);

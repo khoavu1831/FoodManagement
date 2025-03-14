@@ -33,13 +33,11 @@ public class QuanLyThongKe {
 
     public void tinhTongTienNhap() {
         if (quanLyPhieuNhap == null) {
-            System.err.println("Warning: quanLyPhieuNhap is null, cannot calculate tongTienNhap.");
             tongTienNhap = 0.0;
             return;
         }
         List<PhieuNhap> danhSachPhieuNhap = quanLyPhieuNhap.getDanhSachPhieuNhap();
         if (danhSachPhieuNhap == null) {
-            System.err.println("Warning: danhSachPhieuNhap is null.");
             tongTienNhap = 0.0;
             return;
         }
@@ -51,13 +49,11 @@ public class QuanLyThongKe {
 
     public void tinhTongTienXuat() {
         if (quanLyPhieuXuat == null) {
-            System.err.println("Warning: quanLyPhieuXuat is null, cannot calculate tongTienXuat.");
             tongTienXuat = 0.0;
             return;
         }
         List<PhieuXuat> danhSachPhieuXuat = quanLyPhieuXuat.getDanhSachPhieuXuat();
         if (danhSachPhieuXuat == null) {
-            System.err.println("Warning: danhSachPhieuXuat is null.");
             tongTienXuat = 0.0;
             return;
         }

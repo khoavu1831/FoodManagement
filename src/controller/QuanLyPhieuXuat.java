@@ -31,7 +31,7 @@ public class QuanLyPhieuXuat {
 
     public void taoPhieuXuat(QuanLyNhanVien quanLyNhanVien, QuanLyPhieuXuat quanLyPhieuXuat) {
         if (quanLySanPham.getDanhSachSanPham().isEmpty()) {
-            HandleDraw.handleSystemTxt("Danh sach san pham rong!");
+            HandleDraw.handleSystemTxt("Danh sach san pham rong");
             return;
         }
 
@@ -51,15 +51,20 @@ public class QuanLyPhieuXuat {
 
             SanPham sanPham = quanLySanPham.timSanPham(tenSanPhamXuat);
             if (sanPham == null) {
-                HandleDraw.handleSystemTxt("Khong tim thay san pham!");
+                HandleDraw.handleSystemTxt("Khong tim thay san pham");
                 HandleDraw.handleReplyTxt("Nhap san pham khac? (y/n)");
                 String chon = sc.nextLine();
                 isSanPham = chon.equalsIgnoreCase("y");
                 continue;
             }
 
+            if (sanPham.getGiaBan() == 0) {
+                HandleDraw.handleSystemTxt("San pham chua niem yet. Vui long cai dat gia ban");
+                continue;
+            }
+
             if (sanPham.getSoLuongNhap() <= 0) {
-                HandleDraw.handleSystemTxt("San pham da het hang!");
+                HandleDraw.handleSystemTxt("San pham da het hang");
                 HandleDraw.handleReplyTxt("Nhap san pham khac? (y/n)");
                 String chon = sc.nextLine();
                 isSanPham = chon.equalsIgnoreCase("y");
@@ -71,7 +76,7 @@ public class QuanLyPhieuXuat {
             int soLuongXuat = Integer.parseInt(sc.nextLine());
 
             if (soLuongXuat <= 0 || soLuongXuat > sanPham.getSoLuongNhap()) {
-                HandleDraw.handleSystemTxt("So luong xuat khong hop le!");
+                HandleDraw.handleSystemTxt("So luong xuat khong hop le");
                 continue;
             }
 
@@ -89,18 +94,18 @@ public class QuanLyPhieuXuat {
         }
 
         if (danhSachSanPhamXuat.isEmpty()) {
-            HandleDraw.handleSystemTxt("Tao phieu xuat that bai!");
+            HandleDraw.handleSystemTxt("Tao phieu xuat that bai");
             return;
         }
 
         PhieuXuat phieuXuat = new PhieuXuat(maPhieuXuat, tenNv, danhSachSanPhamXuat);
         quanLyPhieuXuat.themPhieuXuat(phieuXuat);
-        HandleDraw.handleSystemTxt("Tao phieu xuat thanh cong!");
+        HandleDraw.handleSystemTxt("Tao phieu xuat thanh cong");
     }
 
     public void xuatDanhSachPhieuXuat(QuanLyPhieuXuat quanLyPhieuXuat) {
         if (quanLyPhieuXuat.getDanhSachPhieuXuat().isEmpty()) {
-            HandleDraw.handleSystemTxt("Danh sach phieu xuat rong!");
+            HandleDraw.handleSystemTxt("Danh sach phieu xuat rong");
             return;
         }
         HandleDraw.handleTitleYellowTxt("Danh sach phieu xuat", 6);
