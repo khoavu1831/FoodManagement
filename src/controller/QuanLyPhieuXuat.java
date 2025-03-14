@@ -113,7 +113,7 @@ public class QuanLyPhieuXuat {
                 HandleDraw.handleChildTitleList("So luong xuat:", String.valueOf(sanPham.getSoLuongXuat()));
                 HandleDraw.handleChildTitleList("Gia ban:", String.valueOf(sanPham.getGiaBan()));
                 HandleDraw.handleChildTitleList("Thanh tien:",
-                        String.valueOf(sanPham.getGiaBan() * sanPham.getSoLuongXuat()));
+                        String.format("%.2f", sanPham.getGiaBan() * sanPham.getSoLuongXuat()));
                 HandleDraw.handlePrintln("     ----------------------", "");
             });
             HandleDraw.handleTitleList("Tong tien:", String.valueOf(phieuXuat.tongTien()));

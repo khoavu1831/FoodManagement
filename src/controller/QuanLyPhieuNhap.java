@@ -94,7 +94,7 @@ public class QuanLyPhieuNhap {
                 HandleDraw.handleChildTitleList("So luong: ", String.valueOf(sanPham.getSoLuongNhap()));
                 HandleDraw.handleChildTitleList("Gia nhap: ", String.valueOf(sanPham.getGiaNhap()));
                 HandleDraw.handleChildTitleList("Thanh tien = ",
-                        String.valueOf(sanPham.getGiaNhap() * sanPham.getSoLuongNhap()));
+                        String.format("%.2f", sanPham.getGiaNhap() * sanPham.getSoLuongNhap()));
                 HandleDraw.handlePrintln("     ----------------------", "");
             });
             HandleDraw.handleTitleList("Tong tien:", String.valueOf(phieuNhap.tongTien()));
