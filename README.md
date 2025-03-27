@@ -27,8 +27,9 @@
 ## Ver 2.0.0
 + File working
 + Constraint
++ Currency Swaping
 + ... 
 ## Tác Giả
 + Người dẫn dắt dự án: *KaiWu*
 + Người bú ké dự án: *DoanPLuu*
-+ Powerful Assistant: Grok 3
++ Powerful Assistant: Grok 3...
